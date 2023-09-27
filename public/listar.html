@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Listar Alumnos</title>
+  <script>
+    async function listarAlumnos() {
+      try {
+        const response = await fetch('/listar');
+        const alumnos = await response.json();
+        const tabla = document.getElementById('tabla-alumnos');
+        alumnos.forEach(alumno => {
+          const fila = tabla.insertRow();
+          fila.insertCell().textContent = alumno.nombre;
+          fila.insertCell().textContent = alumno.edad;
+          fila.insertCell().textContent = alumno.curso;
+          fila.insertCell().textContent = alumno.promedio;
+        });
+      } catch (error) {
+        console.error('Error al obtener la lista de alumnos:', error);
+      }
+    }
+    window.onload = listarAlumnos;
+  </script>
+</head>
+<body>
+  <table id="tabla-alumnos">
+    <tr>
+      <th>Nombre</th>
+      <th>Edad</th>
+      <th>Curso</th>
+      <th>Promedio</th>
+    </tr>
+  </table>
+</body>
+</html>
