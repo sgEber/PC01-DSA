@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const app = express();
 
 // Conexión a MongoDB
-mongoose.connect('mongodb://18.188.14.249/tecsup', {
+mongoose.connect('mongodb://18.188.14.249:27017/tecsup', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
